@@ -18,6 +18,11 @@ from django.urls import path
 from smart_agro.core import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('service/', views.service),
+    path('about/', views.about),
+    path('contact/', views.contact),
     path('admin/', admin.site.urls),
     path('soil-data/', views.SoilDataView.as_view()),
+    path('crops-suggestion/', views.CropsSuggestionView.as_view()),
 ]
