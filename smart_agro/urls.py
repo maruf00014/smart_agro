@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from smart_agro.core import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -25,4 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('soil-data/', views.SoilDataView.as_view()),
     path('crops-suggestion/', views.CropsSuggestionView.as_view()),
+    path("", include("authentication.urls")),  # add this
+    path("", include("app.urls"))  # add this
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
