@@ -1,24 +1,4 @@
-/*!
 
-=========================================================
-* Argon Dashboard - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2018 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-//
-// Bootstrap Datepicker
-//
 
 'use strict';
 
@@ -127,6 +107,9 @@ var FormControl = (function() {
 
 })();
 
+
+
+
 //
 // Google maps
 //
@@ -148,60 +131,60 @@ function initMap() {
     zoom: 12,
     scrollwheel: false,
     center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    styles: [{
-      "featureType": "administrative",
-      "elementType": "labels.text.fill",
-      "stylers": [{
-        "color": "#444444"
-      }]
-    }, {
-      "featureType": "landscape",
-      "elementType": "all",
-      "stylers": [{
-        "color": "#f2f2f2"
-      }]
-    }, {
-      "featureType": "poi",
-      "elementType": "all",
-      "stylers": [{
-        "visibility": "off"
-      }]
-    }, {
-      "featureType": "road",
-      "elementType": "all",
-      "stylers": [{
-        "saturation": -100
-      }, {
-        "lightness": 45
-      }]
-    }, {
-      "featureType": "road.highway",
-      "elementType": "all",
-      "stylers": [{
-        "visibility": "simplified"
-      }]
-    }, {
-      "featureType": "road.arterial",
-      "elementType": "labels.icon",
-      "stylers": [{
-        "visibility": "off"
-      }]
-    }, {
-      "featureType": "transit",
-      "elementType": "all",
-      "stylers": [{
-        "visibility": "off"
-      }]
-    }, {
-      "featureType": "water",
-      "elementType": "all",
-      "stylers": [{
-        "color": color
-      }, {
-        "visibility": "on"
-      }]
-    }]
+    mapTypeId: 'hybrid',
+    // styles: [{
+    //   "featureType": "administrative",
+    //   "elementType": "labels.text.fill",
+    //   "stylers": [{
+    //     "color": "#444444"
+    //   }]
+    // }, {
+    //   "featureType": "landscape",
+    //   "elementType": "all",
+    //   "stylers": [{
+    //     "color": "#f2f2f2"
+    //   }]
+    // }, {
+    //   "featureType": "poi",
+    //   "elementType": "all",
+    //   "stylers": [{
+    //     "visibility": "off"
+    //   }]
+    // }, {
+    //   "featureType": "road",
+    //   "elementType": "all",
+    //   "stylers": [{
+    //     "saturation": -100
+    //   }, {
+    //     "lightness": 45
+    //   }]
+    // }, {
+    //   "featureType": "road.highway",
+    //   "elementType": "all",
+    //   "stylers": [{
+    //     "visibility": "simplified"
+    //   }]
+    // }, {
+    //   "featureType": "road.arterial",
+    //   "elementType": "labels.icon",
+    //   "stylers": [{
+    //     "visibility": "off"
+    //   }]
+    // }, {
+    //   "featureType": "transit",
+    //   "elementType": "all",
+    //   "stylers": [{
+    //     "visibility": "off"
+    //   }]
+    // }, {
+    //   "featureType": "water",
+    //   "elementType": "all",
+    //   "stylers": [{
+    //     "color": color
+    //   }, {
+    //     "visibility": "on"
+    //   }]
+    // }]
   }
 
   map = new google.maps.Map(map, mapOptions);
@@ -583,7 +566,7 @@ var Charts = (function() {
     },
     theme: {
       'default': '#172b4d',
-      'primary': '#5e72e4',
+      'primary': '#2dce89',
       'secondary': '#f4f5f7',
       'info': '#11cdef',
       'success': '#2dce89',
@@ -958,164 +941,4 @@ var Charts = (function() {
 
 })();
 
-//
-// Orders chart
-//
 
-var OrdersChart = (function() {
-
-  //
-  // Variables
-  //
-
-  var $chart = $('#chart-orders');
-  var $ordersSelect = $('[name="ordersSelect"]');
-
-
-  //
-  // Methods
-  //
-
-  // Init chart
-  function initChart($chart) {
-
-    // Create chart
-    var ordersChart = new Chart($chart, {
-      type: 'bar',
-      options: {
-        scales: {
-          yAxes: [{
-            gridLines: {
-              lineWidth: 1,
-              color: '#dfe2e6',
-              zeroLineColor: '#dfe2e6'
-            },
-            ticks: {
-              callback: function(value) {
-                if (!(value % 10)) {
-                  //return '$' + value + 'k'
-                  return value
-                }
-              }
-            }
-          }]
-        },
-        tooltips: {
-          callbacks: {
-            label: function(item, data) {
-              var label = data.datasets[item.datasetIndex].label || '';
-              var yLabel = item.yLabel;
-              var content = '';
-
-              if (data.datasets.length > 1) {
-                content += '<span class="popover-body-label mr-auto">' + label + '</span>';
-              }
-
-              content += '<span class="popover-body-value">' + yLabel + '</span>';
-
-              return content;
-            }
-          }
-        }
-      },
-      data: {
-        labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Sales',
-          data: [25, 20, 30, 22, 17, 29]
-        }]
-      }
-    });
-
-    // Save to jQuery object
-    $chart.data('chart', ordersChart);
-  }
-
-
-  // Init chart
-  if ($chart.length) {
-    initChart($chart);
-  }
-
-})();
-
-//
-// Charts
-//
-
-'use strict';
-
-//
-// Sales chart
-//
-
-var SalesChart = (function() {
-
-  // Variables
-
-  var $chart = $('#chart-sales');
-
-
-  // Methods
-
-  function init($chart) {
-
-    var salesChart = new Chart($chart, {
-      type: 'line',
-      options: {
-        scales: {
-          yAxes: [{
-            gridLines: {
-              lineWidth: 1,
-              color: Charts.colors.gray[900],
-              zeroLineColor: Charts.colors.gray[900]
-            },
-            ticks: {
-              callback: function(value) {
-                if (!(value % 10)) {
-                  return '$' + value + 'k';
-                }
-              }
-            }
-          }]
-        },
-        tooltips: {
-          callbacks: {
-            label: function(item, data) {
-              var label = data.datasets[item.datasetIndex].label || '';
-              var yLabel = item.yLabel;
-              var content = '';
-
-              if (data.datasets.length > 1) {
-                content += '<span class="popover-body-label mr-auto">' + label + '</span>';
-              }
-
-              content += '<span class="popover-body-value">$' + yLabel + 'k</span>';
-              return content;
-            }
-          }
-        }
-      },
-      data: {
-        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Performance',
-          data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
-        }]
-      }
-    });
-
-    // Save to jQuery object
-
-    $chart.data('chart', salesChart);
-
-  };
-
-
-  // Events
-
-  if ($chart.length) {
-    init($chart);
-  }
-
-})();

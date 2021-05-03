@@ -6135,6 +6135,9 @@ button.bg-danger:focus {
 .bg-light {
   background-color: #f8f9fa !important;
 }
+.bg-custom {
+  background-color: #2BBE65 !important;
+}
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
@@ -10415,6 +10418,7 @@ header.masthead .masthead-heading {
     padding: 0 100px 20px 20px;
   }
 }
+
 .team-member {
   margin-bottom: 3rem;
   text-align: center;
@@ -10435,19 +10439,19 @@ section#services {
   background-position: center;
 }
 section#team {
-  background-color: #212529;
-  background-image: url("../assets/img/a8.png");
+  background-color: #2BBE65;
+  /* background-image: url("../assets/img/a17.png"); */
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; 
   color: white;
 }
-section#contact {
+section#contact { 
   background-color: #212529;
   background-image: url("../assets/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
-}
-section#contact .section-heading {
+}      
+section#contact .section-heading { 
   color: #fff;
 }
 section#contact form#contactForm .form-group {
@@ -10580,4 +10584,101 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 @media screen and (max-width:990px) {
     .counter{ margin-bottom: 40px; }
+
+
+
+
+.who_we_are,.latest-news {
+  padding: 4em 0;
+}
+.who_we_are, .latest-news {
+    padding: 3em 0;
+  }
+.who_we_are, .latest-news {
+    padding: 3em 0;
+  }
+  .who_we_are, .latest-news {
+    padding: 2em 0;
+  }
+
+  .why_choose_us {
+  padding: 3em 0;
+  background: #7B6D44;
+}
+.whyus p {
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.965em;
+  line-height: 1.8em;
+  margin: 15px 0 0 0;
+  font-weight:300;
+}
+.whyus span {
+  margin-top: 15px;
+  display: inline-block;
+  width: 78px;
+  height: 78px;
+  background: #ffffff;  
+  color: #a6192e; 
+  text-align: center; 
+  font-size: 24px;
+  line-height: 78px;
+  border-radius: 50%; 
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -moz-border-radius: 50%;
+  position: relative;
+}
+.why_choose_us h3 {
+  color: #fff;
+  font-size: 2.7em;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 0.8em;
+    padding: 0;
+}
+  .col-md-4.whyus {
+    width: 33.333%;
+    float: left;
+    padding:0 10px;
+  }
+  .whyus span {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+    line-height: 70px;
+  }
+    .col-md-4.whyus {
+    width: 33.333%;
+    float: left;
+    padding:0 10px;
+  }
+  .whyus span {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+    line-height: 70px;
+  }
+    .why_choose_us h3 {
+    font-size: 2.2em;
+    margin-bottom: 0.2em;
+  }
+    .col-md-4.whyus {
+    width: 100%;
+    margin-top:1.2em;
+  }
+  .whyus p {
+    font-size: 01.1em;
+    line-height: 1.7em;
+    margin: 10px 0 0 0;
+  }
+    .why_choose_us h3 {
+    font-size: 2em;
+  }
+  .why_choose_us {
+    padding: 2em 0;
+  }
+.text-custom{
+  color: #2BBE65;
 }

@@ -1,0 +1,133 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+    <!-- Header -->
+    {% include "includes/header.html" %}
+
+    <div class="container-fluid mt--7 mb-5">
+
+      <!-- Table -->
+      <div class="row">
+        <div class="col-xl-12 mb-5 mb-xl-0">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Crops Suggestion</h3>
+                </div>
+
+              </div>
+            </div>
+
+            {% if suggestion_data.crops_suggestion %}
+
+            <div class="table-responsive pb-3">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Crops Name</th>
+                    <th scope="col">Moisture</th>
+                    <th scope="col">pH</th>
+                    <th scope="col">N</th>
+                    <th scope="col">P</th>
+                    <th scope="col">K</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% for crops in suggestion_data.crops_suggestion %}
+
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                                                <div class="media-body">
+                          <span class="mb-0 text-sm">{{ forloop.counter }}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{ crops.crops_name }}</span>
+                       </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{ crops.moisture }}</span>
+                       </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{ crops.pH }}</span>
+                       </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{ crops.N }}</span>
+                       </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{ crops.P}}</span>
+                       </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{ crops.K }}</span>
+                       </div>
+                    </td>
+                    <td class="text-right">
+                    
+                    </td>
+                  </tr>
+
+                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+
+            {% else %}
+              <div class="text-center pb-8 pt-8"> No suggestion found. </div>
+            {% endif %}
+
+            <!-- <div class="card-footer py-4">
+              <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">
+                      <i class="fas fa-angle-left"></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      <i class="fas fa-angle-right"></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    {% include "includes/footer.html" %}
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

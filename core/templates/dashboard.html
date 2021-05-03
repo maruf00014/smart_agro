@@ -7,384 +7,386 @@
 
 {% block content %}
 
-    <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-      <div class="container-fluid">
-        <div class="header-body">
-          <!-- Card stats -->
-          <div class="row">
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                        <i class="fas fa-chart-bar"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
+<!-- Header -->
+{% include "includes/header.html" %}
+
+<div class="container-fluid mt--7 mb-5">
+
+  <div class="row mb-5">
+    <div class="col-xl-12">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <div class="row mb-3 align-items-center justify-content-between">
+            <div class="col-4">
+              <h3 class="mb-0">Soid Data Overview</h3>
             </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                        <i class="fas fa-chart-pie"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last week</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                        <i class="fas fa-users"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                    <span class="text-nowrap">Since yesterday</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                        <i class="fas fa-percent"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
+            <div class="col-8 text-right">
+              <div class="dropdown">
+                
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                  aria-haspopup="false" aria-expanded="false">
+                  {% if selected_land %}
+                  {{selected_land.name}}
+                  {% else %}
+                  Select Your Land
+                  {% endif %}
+                </button>
+                <input class="btn" type="button" id="datepicker" value="{% if selected_date %}
+                {{selected_date}}
+                {% else %}
+                {%  now "d-m-Y"%}
+                {% endif %}" onclick="show_dp();">
+                  </input>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  {% for land in lands %}
+                  <a class="dropdown-item" href="{% url 'soil-data' land.id %}" id>{{land.name}}</a>
+                  {% endfor %}
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="row mb-5">
+            <div class="col-xl-6 mb-5 mb-xl-0">
+              <div class="card bg-gradient-default-chart shadow">
+                <div class="card-header bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <!-- <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6> -->
+                      <h2 class="text-green mb-0">Moisture</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    {% if soil_data.mos %}
+                    <canvas id="chart-mos" class="chart-canvas"></canvas>
+                    {% else %}
+                    <h3 class="centered-div"> No Data </h3>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 mb-5 mb-xl-0">
+              <div class="card bg-gradient-default-chart shadow">
+                <div class="card-header bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <!-- <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6> -->
+                      <h2 class="text-green mb-0">pH</h2>
+                    </div>
+                   
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    {% if soil_data.pH %}
+                    <canvas id="chart-ph" class="chart-canvas"></canvas>
+                    {% else %}
+                    <h3 class="centered-div"> No Data </h3>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-xl-6 mb-5 mb-xl-0">
+              <div class="card bg-gradient-default-chart shadow">
+                <div class="card-header bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <!-- <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6> -->
+                      <h2 class="text-green mb-0">Nitrogen</h2>
+                    </div>
+                   
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    {% if soil_data.N %}
+                    <canvas id="chart-n" class="chart-canvas"></canvas>
+                    {% else %}
+                    <h3 class="centered-div"> No Data </h3>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 mb-5 mb-xl-0">
+              <div class="card bg-gradient-default-chart shadow">
+                <div class="card-header bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <!-- <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6> -->
+                      <h2 class="text-green mb-0">Phosphorus</h2>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    {% if soil_data.P %}
+                    <canvas id="chart-p" class="chart-canvas"></canvas>
+                    {% else %}
+                    <h3 class="centered-div"> No Data </h3>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row mb-5">
+            <div class="col-xl-6 mb-5 mb-xl-0">
+              <div class="card bg-gradient-default-chart shadow">
+                <div class="card-header bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <!-- <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6> -->
+                      <h2 class="text-green mb-0">Potassium</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    {% if soil_data.K %}
+                    <canvas id="chart-k" class="chart-canvas"></canvas>
+                    {% else %}
+                    <h3 class="centered-div"> No Data </h3>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="container-fluid mt--7">
-
-      <div class="row">
-        <div class="col-xl-8 mb-5 mb-xl-0">
-          <div class="card bg-gradient-default shadow">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                  <h2 class="text-white mb-0">Sales value</h2>
-                </div>
-                <div class="col">
-                  <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                        <span class="d-none d-md-block">Month</span>
-                        <span class="d-md-none">M</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                        <span class="d-none d-md-block">Week</span>
-                        <span class="d-md-none">W</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <!-- Chart wrapper -->
-                <canvas id="chart-sales" class="chart-canvas"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4">
-          <div class="card shadow">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                  <h2 class="mb-0">Total orders</h2>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <canvas id="chart-orders" class="chart-canvas"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-xl-8 mb-5 mb-xl-0">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Page visits</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                </div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      /argon/
-                    </th>
-                    <td>
-                      4,569
-                    </td>
-                    <td>
-                      340
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/index.html
-                    </th>
-                    <td>
-                      3,985
-                    </td>
-                    <td>
-                      319
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/charts.html
-                    </th>
-                    <td>
-                      3,513
-                    </td>
-                    <td>
-                      294
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/tables.html
-                    </th>
-                    <td>
-                      2,050
-                    </td>
-                    <td>
-                      147
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/profile.html
-                    </th>
-                    <td>
-                      1,795
-                    </td>
-                    <td>
-                      190
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Social traffic</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                </div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Referral</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      Facebook
-                    </th>
-                    <td>
-                      1,480
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">60%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Facebook
-                    </th>
-                    <td>
-                      5,480
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">70%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Google
-                    </th>
-                    <td>
-                      4,807
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">80%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Instagram
-                    </th>
-                    <td>
-                      3,678
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">75%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      twitter
-                    </th>
-                    <td>
-                      2,645
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">30%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {% include "includes/footer.html" %}
-
-    </div>
-
+{% include "includes/footer.html" %}
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
-{% block javascripts %}{% endblock javascripts %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+
+$(function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: "dd-mm-yy",
+    onSelect: function(dateText, inst) {
+      window.location.href = "/dashboard/soil-data/{{selected_land.id}}/"+dateText;
+
+    }
+})
+  });
+  
+  function show_dp(){
+      $( "#datepicker" ).datepicker('show'); //Show on click of button
+     }
+
+//
+// soil data chart
+//
+
+var soil_data_chart = (function() {
+
+// Variables
+
+var $chart_ph = $('#chart-ph');
+var $chart_mos = $('#chart-mos');
+var $chart_n = $('#chart-n');
+var $chart_p = $('#chart-p');
+var $chart_k = $('#chart-k');
+
+
+function init_ph($chart) {
+
+  var phChart = new Chart($chart, {
+    type: 'line',
+    options: {
+      scales: {
+        yAxes: [{
+          gridLines: {
+            lineWidth: 1,
+            color: Charts.colors.gray[900],
+            zeroLineColor: Charts.colors.gray[900]
+          },
+          ticks: {
+            beginAtZero: true,
+            stepSize: 2,
+            max: 14,
+            min: 0,
+            callback: function(value, index, values) {
+              return (index < 15) ? value : null;
+            }
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function(item, data) {
+            var label = data.datasets[item.datasetIndex].label || '';
+            var yLabel = item.yLabel;
+            var content = '';
+
+            if (data.datasets.length > 1) {
+              content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+            }
+
+            content += '<span class="popover-body-value">pH: ' + yLabel;
+            return content;
+          }
+        }
+      }
+    },
+    data: {
+      labels: ['3 AM', '6 AM', '9 AM', '12 PM','3 PM','6 PM','9 PM','12 AM' ],
+      datasets: [{
+        label: 'pH',
+        data: {{soil_data.pH|safe}},
+      }]
+    }
+  });
+
+};
+
+
+function init_mos($chart) {
+
+  var mosChart = new Chart($chart, {
+    type: 'line',
+    options: {
+      scales: {
+        yAxes: [{
+          gridLines: {
+            lineWidth: 1,
+            color: Charts.colors.gray[900],
+            zeroLineColor: Charts.colors.gray[900]
+          },
+          ticks: {
+            beginAtZero: true,
+            stepSize: 20,
+            max: 100,
+            min: 0,
+            callback: function(value, index, values) {
+              return (index < 101) ? value : null;
+            }
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function(item, data) {
+            var label = data.datasets[item.datasetIndex].label || '';
+            var yLabel = item.yLabel;
+            var content = '';
+
+            if (data.datasets.length > 1) {
+              content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+            }
+
+            content += '<span class="popover-body-value">mos: ' + yLabel +' %' +'</span>';
+            return content;
+          }
+        }
+      }
+    },
+    data: {
+      labels: ['3 AM', '6 AM', '9 AM', '12 PM','3 PM','6 PM','9 PM','12 AM'  ],
+      datasets: [{
+        label: 'Moisture',
+        data: {{soil_data.mos|safe}}
+      }]
+    }
+  });
+
+};
+
+function init_NPK($chart, data) {
+
+  var salesChart = new Chart($chart, {
+    type: 'line',
+    options: {
+      scales: {
+        yAxes: [{
+          gridLines: {
+            lineWidth: 1,
+            color: Charts.colors.gray[900],
+            zeroLineColor: Charts.colors.gray[900]
+          },
+          ticks: {
+            min: 0,
+            callback: function(value) {
+              if (!(value % 10)) {
+                return value;
+              }
+            }
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function(item, data) {
+            var label = data.datasets[item.datasetIndex].label || '';
+            var yLabel = item.yLabel;
+            var content = '';
+
+            if (data.datasets.length > 1) {
+              content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+            }
+
+            content += '<span class="popover-body-value">' + yLabel + '</span>';
+            return content;
+          }
+        }
+      }
+    },
+    data: {
+      labels: [ '3 AM', '6 AM', '9 AM', '12 PM','3 PM','6 PM','9 PM','12 AM'  ],
+      datasets: [{
+        label: 'NPK',
+        data: data
+      }]
+    }
+  });
+
+};
+
+
+
+
+if ($chart_ph.length) {
+  init_ph($chart_ph);
+}
+if ($chart_mos.length) {
+  init_mos($chart_mos);
+}
+if ($chart_n.length) {
+  init_NPK($chart_n,{{soil_data.N|safe}});
+}
+if ($chart_p.length) {
+  init_NPK($chart_p,{{soil_data.P|safe}});
+}
+if ($chart_k.length) {
+  init_NPK($chart_k,{{soil_data.K|safe}});
+}
+
+})();
+
+</script>
+
+{% endblock javascripts %}

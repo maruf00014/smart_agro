@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'smart_agro.core',
+    'smart_agro.core.apps.SmartagroConfig',
     'app'
+
 ]
 
 MIDDLEWARE = [
@@ -91,7 +92,7 @@ DATABASES = {
     #     'PASSWORD': '12345',
     #     'HOST': 'localhost',
     #     'PORT': '5432',
-    #
+    
     # }
 
 }

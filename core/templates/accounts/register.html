@@ -28,13 +28,33 @@
               {% if success %}
 
                 <p class="text-center">
-                  Please <a href={% url 'login' %} class="text-black text-small">Login</a> using the new account.
+                  Please <a href={% url 'login' %} id="regi" class="text-black text-small">Login</a> using the new account.
                 </p>  
 
               {% else %}
 
                 <form method="POST">
                   {% csrf_token %}
+
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                      </div>
+                      {{ form.first_name }}
+                    </div>
+                  </div>
+                  <span class="text-error">{{ form.first_name.errors }}</span>
+
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                      </div>
+                      {{ form.last_name }}
+                    </div>
+                  </div>
+                  <span class="text-error">{{ form.last_name.errors }}</span>
             
                   <div class="form-group">
                     <div class="input-group input-group-alternative mb-3">

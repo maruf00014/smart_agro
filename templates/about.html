@@ -20,6 +20,10 @@
         <link href=" {% static 'css/service1.css' %} " rel="stylesheet" />
         <link href=" {% static 'css/team1.css' %} " rel="stylesheet" />
 
+        <!-- <link href=" {% static 'css/bootstrap_about.css' %} " rel="stylesheet" /> -->
+        <link href=" {% static 'css/style_about.css' %} " rel="stylesheet" />
+
+
 
         <link rel="stylesheet" media="all" href=" {% static 'assets/revamp/main.css' %} " />
     </head>
@@ -37,9 +41,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
-                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger " href="{% url 'index' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/service/">Services</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="/about/">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about/">About</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact/">Contact</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/dashboard/">Sign In</a></li>
 
@@ -54,25 +58,257 @@
 
 
        <!-- Team-->
-        <section class="page-section bg-light" id="team">
-            <div class="container">
+        <section class="page-section bg-custom" id="team">
+            <div class="container py-xl-5 my-xl-5">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase my-5 py-5">About Us</h2>
-                    <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+                    <h2 class="section-heading text-uppercase my-4 py-2">Who We Are</h2>
                 </div>
-
-
-
-
-
-                <div class="p-5 d-flex justify-content-center my-5">
-                  <button class="btn btn-danger p-3" type="button">
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Under Construction...
-                  </button>
+                <div class="text-center">
+                      There's the field where farmers use our device and they know which crop is suitable for their land. <br>We suggest best crop and we ensures farmers freedom to select their favorite crop for their land.
+                  </div>
                 </div>
             </div>
         </section> 
+
+  <!-- content-section-starts -->
+<div class="main">
+  <div class="about-content text-center">
+
+<!--       <div class="who_we_are">
+        <div class="container">
+          <div class="about-top">
+            <header>
+              <h3>Who We Are</h3>
+            </header>
+            <h5>There's the field where farmers use our device and they know which crop is suitable for their land. We suggest best crop and we ensures farmers freedom to select their favorite crop for their land.</h5>
+          </div>
+          <div class="abt_img1"><img src="images/w1.jpg" alt=""></div>
+          <div class="abt_img2"><img src="images/w2.jpg" alt=""></div>
+          <div class="clearfix"></div>
+        </div>
+      </div> -->
+
+  <div class="page-section bg-light p-5">
+    <div class="container-fluid mb-5 text-custom">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase my-4 py-2">Why choose Us</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="our-services database">
+                        <div class="icon"> <img src=" {% static 'assets/img/service/database.png' %} "> </div>
+                        <h4>Only knowing the soil content we will provide which crop will give good results in your land.</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="our-services speedup">
+                        <div class="icon"> <img src=" {% static 'assets/img/service/speedup.png' %} "> </div>
+                        <h4>We have also put here some guidelines through which farmers can get a lot of information about the crop.</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="our-services settings">
+                        <div class="icon"> <img src=" {% static 'assets/img/service/settings.png' %} "> </div>
+                        <h4>We provide results instantly.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>  
+
+
+<!--     <div class="why_choose_us">
+      <div class="container">
+        <header><h3>Why choose Us</h3></header>
+        <div class="row">
+            
+          </div>
+          <div class="col-md-4 whyus">
+            <div>
+              <span>01</span>
+              <p>Only knowing the soil content we will provide which crop will give good results in your land.</p>
+            </div>
+          </div>
+          <div class="col-md-4 whyus">
+            <div>
+              <span>02</span>
+              <p>Maecenas molesetdbus idictum. Ut neque purus, sollic alitudin non ante ac, malesuada condimentum libero. Nunc hendrerit augue vel tempor posuere. Cras consectetur.</p>
+    
+            </div>
+          </div>
+          <div class="col-md-4 whyus">
+            <div>
+              <span>03</span>
+              <p>Maecenas molesetdbus idictum. Ut neque purus, sollic alitudin non ante ac, malesuada condimentum libero. Nunc hendrerit augue vel tempor posuere. Cras consectetur.</p>
+      
+            </div>
+          </div>
+      </div>
+    </div> -->
+
+    <!-- What Is iFarmer Section -->
+    <div class="what-is-ifarmer-container">
+      <div class="what-is-ifarmer-text-wrapper">
+        <div class="d-sm-flex flex-sm-column">
+          <div class="section-header landing-section-title title-font">
+            <span class="">What Client Say</span>
+          </div>
+
+        </div>
+      </div>
+      <div class="what-is-ifarmer-cards-wrapper">
+        <div class="d-sm-flex flex-sm-column">
+          <div class="section-items d-sm-flex flex-sm-row what-is-ifarmer-cards">
+            <a href="" class="what-is-ifarmer-single-card text-center">
+              <div class="what-is-ifarmer-card-icon pt-4">
+                <img width="200" height="200" src=" {% static 'assets/clients/raju.jpg' %} " />
+              </div>
+              <div class="item-title-font card-title">
+                Raju Ahmed
+              </div>
+              <div class="card-content para-font text-center">
+                - "I have got the necessary information to produce litchi from SmartAgro."
+              </div>
+            </a>
+            <a href="" class="what-is-ifarmer-single-card text-center">
+              <div class="what-is-ifarmer-card-icon pt-4">
+                <img width="200" height="200" src=" {% static 'assets/clients/shanto.jpg' %} " />
+              </div>
+              <div class="item-title-font card-title">
+                Shakil Ahmed
+              </div>
+              <div class="card-content para-font text-center">
+                - "Great job SmartAgro. Touches of modernity in agriculture."
+              </div>
+            </a>
+            <a href="" class="what-is-ifarmer-single-card text-center">
+              <div class="what-is-ifarmer-card-icon pt-4">
+                <img width="200" height="200" src=" {% static 'assets/clients/roman.jpg' %} " />
+              </div>
+              <div class="item-title-font card-title">
+                Roman Miah
+              </div>
+              <div class="card-content para-font text-center">
+                - "Thanks to SmartAgro, I am able to grow twice as many potatoes on my land." 
+              </div>
+            </a>
+            <a href="" class="what-is-ifarmer-single-card text-center">
+              <div class="what-is-ifarmer-card-icon pt-4">
+                <img width="200" height="200" src=" {% static 'assets/clients/rubaet.jpg' %} " />
+              </div>
+              <div class="item-title-font card-title">
+                Tarikul Islam
+              </div>
+              <div class="card-content para-font text-center">
+                - "It helped me to get rid of insects."
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+       <!-- Team-->
+<!--         <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase my-4 py-2">Our Team</h2>
+                </div>
+                <section class="main">
+                  <ul class="ch-grid">
+                    <li class="mx-5 my-5">
+                      <div class="ch-item ch-img-2 mb-2">
+                        <div class="ch-info">
+                          <h4>Md. Arman Sharif</h4>
+                          <p>Student</p>
+                        </div>
+                      </div>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="mx-5 my-5">
+                      <div class="ch-item ch-img-3 mb-2">
+                        <div class="ch-info">
+                          <h4>Jubayda Anower</h4>
+                          <p>Student</p>
+                        </div>
+                      </div>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                  </ul>
+                </section>
+
+            </div>
+        </section>  -->
+
+
+
+       <!-- Team-->
+        <section class="page-section bg-custom text-white" id="">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Our Team</h2>
+                </div>
+                <section class="main">
+                  <ul class="ch-grid">
+                    <li class="mx-3 my-3">
+                      <div class="ch-item ch-img-3 mb-2">
+                        <div class="ch-info">
+                          <h4>Jubayda Anower</h4>
+                          <p>Student</p>
+                          <!-- <p>by Charlie Wagers <a href="#">View on Dribbble</a></p> -->
+                        </div>
+                      </div>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="" style="">
+                      Jubayda Anower<br><hr>
+                      Web Designer & Developer<br>
+                      Cell No: 01XXX-XXXXXX<br>
+                      Sonargang,<br>
+                      Dhaka.<br><br><br>
+                    </li>
+                  </ul>
+                  <ul class="ch-grid">
+                    <li class="">
+                      Md. Arman Sharif<br><hr>
+                      Web Designer & Developer<br>
+                      Cell No: 01632-109022<br>
+                      Notun Palton Line,<br>
+                      Dhaka-1205.<br><br><br>
+                    </li>
+                    <li class="mx-5 my-5">
+                      <div class="ch-item ch-img-2 mb-2">
+                        <div class="ch-info">
+                          <h4>Md. Arman Sharif</h4>
+                          <p>Student</p>
+                        </div>
+                      </div>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href=" {% static '#!' %} "><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                  </ul>                
+                </section>
+
+            </div>
+        </section> 
+
+  </div>
+</div>
+
+
 
 
 

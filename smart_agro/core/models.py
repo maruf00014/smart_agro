@@ -1,19 +1,28 @@
 from django.db import models
 from datetime import datetime
-from django.utils.timezone import now
+from django.contrib.auth.models import User
 import uuid
-
 # Create your models here
 
+
+def profile_image_upload_to(instance, filename):
+    return 'profile_images/%s/%s' % (instance.user.username, filename)
+
 class Farmer(models.Model):
+    user = models.OneToOneField(User, default=None,on_delete=models.CASCADE, related_name='farmer')
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
     name = models.CharField(max_length=30)
+    profile_image = models.ImageField(upload_to= profile_image_upload_to, blank=True, default="profile_images/blank-profile-picture.png")
     phone = models.CharField(max_length=15)
     email = models.EmailField(blank=True)
-    address = models.EmailField(blank=True)
+    address = models.CharField(max_length=100, blank=True, default='')
+    city = models.CharField(max_length=30, blank=True, default='')
+    country = models.CharField(max_length=30, blank=True, default='')
+    postal_code = models.IntegerField(blank=True, default=-1)
+    about_me = models.CharField(max_length=300, blank=True, default='')
 
     def __str__(self):
-        return str(self.name) + " (" + str(self.phone) + ")"
+        return str(self.user.email)
 
 class Land(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
@@ -59,3 +68,4 @@ class CropsData(models.Model):
 
     def __str__(self):
         return str(self.crops_name) + " (" + str(self.id) + ")"
+

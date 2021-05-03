@@ -92,7 +92,7 @@ body {
   line-height: 1.5;
   color: #525f7f;
   text-align: left;
-  background-color: #f8f9fe;
+  background-color: #C0FFC2;
 }
 
 [tabindex="-1"]:focus {
@@ -127,6 +127,7 @@ abbr[data-original-title] {
   cursor: help;
   border-bottom: 0;
 }
+
 
 address {
   margin-bottom: 1rem;
@@ -191,16 +192,25 @@ sup {
 }
 
 a {
-  color: #5e72e4;
+  color: #ffffff; 
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-}
+  font-weight: bold;
+} 
 
-a:hover {
-  color: #233dd2;
+a:hover { 
+  color: #FDD036;
   text-decoration: none;
+} 
+
+#regi{
+  color: #007121;
 }
+#regi:hover { 
+  color: #FDD036;
+  text-decoration: none;
+} 
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -524,10 +534,22 @@ mark,
 .blockquote-footer::before {
   content: "\2014 \00A0";
 }
-
+.centered-div {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  margin-top:-20px ;
+  margin-left: -30px; 
+  color: var(--green);
+}
 .img-fluid {
   max-width: 100%;
   height: auto;
+}
+
+.profile-image{
+  object-fit: cover;
+  height: 180px;
 }
 
 .img-thumbnail {
@@ -642,6 +664,7 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+
 }
 
 .no-gutters {
@@ -6908,7 +6931,7 @@ button.bg-dark:focus {
 }
 
 .bg-default {
-  background-color: #172b4d !important;
+  background-color: #007121 !important;
 }
 
 a.bg-default:hover,
@@ -8418,7 +8441,7 @@ button.bg-darker:focus {
 
 .mt--8,
 .my--8 {
-  margin-top: -8rem !important;
+  margin-top: -15rem !important;
 }
 
 .mr--8,
@@ -8443,6 +8466,11 @@ button.bg-darker:focus {
 .mt--7,
 .my--7 {
   margin-top: -6rem !important;
+}
+
+.mt--30, 
+.my--30 {
+  margin-top: -28rem !important;
 }
 
 .mr--7,
@@ -13163,7 +13191,7 @@ a.text-darker:focus {
 }
 
 .text-muted {
-  color: #8898aa !important;
+  color: #CACACA !important;
 }
 
 .text-black-50 {
@@ -13469,7 +13497,7 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+  background: linear-gradient(87deg, #2BBE65 0, #2BBE65 100%) !important;
 }
 
 .bg-gradient-secondary {
@@ -13501,7 +13529,14 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-default {
-  background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+  background: linear-gradient(87deg, #2CBF66 0, #2CBF66 100%) !important;
+}
+.bg-gradient-default-chart {
+  background: linear-gradient(87deg, #2CBF66 0, #2CBF66 100%) !important;
+}
+
+.bg-gradient-default-new {
+  background: linear-gradient(87deg, #0b8d3e 0, #0b8d3e 100%) !important;
 }
 
 .bg-gradient-white {
@@ -13764,7 +13799,7 @@ button.section-darker:focus {
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+  background: linear-gradient(87deg, #2BBE65 0, #2BBE65 100%) !important;
 }
 
 .bg-gradient-secondary {
@@ -13796,7 +13831,14 @@ button.section-darker:focus {
 }
 
 .bg-gradient-default {
-  background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+  background: linear-gradient(87deg, #2CBF66 0, #2CBF66 100%) !important;
+}
+.bg-gradient-default-chart {
+  background: linear-gradient(87deg, #fff 0, #fff 100%) !important;
+}
+
+.bg-gradient-default-new {
+  background: linear-gradient(87deg, #0b8d3e 0, #0b8d3e 100%) !important;
 }
 
 .bg-gradient-white {
@@ -13876,7 +13918,7 @@ button.section-darker:focus {
 }
 
 .fill-default {
-  fill: #172b4d;
+  fill: #007121;
 }
 
 .stroke-default {
@@ -15500,15 +15542,15 @@ a.btn-icon-only {
 }
 
 .chart {
-  position: relative;
-  height: 350px;
+  position: relative; 
+  height: 150px;
 }
 
 .chart-sm {
-  height: 230px;
+  height: 80px;
 }
 
-.chart-legend {
+.chart-legend { 
   display: flex;
   justify-content: center;
   margin-top: 2.5rem;
@@ -15859,7 +15901,7 @@ a.btn-icon-only {
 }
 
 .footer {
-  background: #f7fafc;
+  background: #2CBF66;
   padding: 2.5rem 0;
 }
 

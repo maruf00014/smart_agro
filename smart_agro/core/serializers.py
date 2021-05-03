@@ -14,7 +14,7 @@ class LandSerializer(serializers.ModelSerializer):
 class FarmerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Farmer
-        fields = ['id', 'name', 'phone','email', 'address']
+        fields = ['id', 'name', 'phone','email', 'city','country','postal_code']
 
 
 
